@@ -4,8 +4,8 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-win: #1DACE8;
+  --color-lose: #FCD16B;
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
@@ -20,6 +20,7 @@
 
 * {
   box-sizing: border-box;
+  font: 1rem/1.5 'Cutive Mono', monospace, sans-serif, Helvetica, 'Century Gothic';
 }
 
 body {
@@ -27,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: #E5C4A1;
 }
 
 li, ol, ul {
@@ -37,14 +39,14 @@ li, ol, ul {
 h2 {
   margin: 0;
   text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-size: var(--font-size-large);
   margin: 0;
 }
 
 button {
   margin: 6px;
-  border: 1px solid transparent;
+  border: 3px solid #fff;
   padding: .5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
@@ -53,6 +55,19 @@ button {
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+}
+
+button:hover {
+    background-color:#D2EAEB;
+    border: 3px solid #91D7FF;
+}
+button:active {
+    background-color:#f2c4c4;
+    border: 3px solid #f466b4;
+}
+
+button:focus {
+  outline:0;
 }
 
 .main-container {
@@ -73,12 +88,24 @@ button {
 
 .header {
   color: var(--color-start);
+  transition: var(--transition);
+}
+
+.bounce-in-top {
+    -webkit-animation: bounce-in-top 1.1s both;
+    animation: bounce-in-top 1.1s both;
+}
+
+.drop {
+
 }
 
 /* Scoreboard */
 
 .tries {
-  background-image: url('../images/liveHeart.png');
+  /* background-image: url('../images/liveHeart.png'); */
+  background-size: 100% 100%;
+  margin-left: 1em;
 }
 
 /* Phrase */
@@ -88,20 +115,26 @@ button {
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
-  margin-right: 2px;
+  margin-right: 4px;
   color: transparent;
-  background: var(--color-neutral-light);
+  background: #fff;
   border-radius: 5px;
+  border: 2px solid transparent;
+  transition: 300ms linear 0s;
+  z-index: -100;
 }
 
 .space {
-  width: 15px;
+  width: 20px;
 }
 
 .show {
-  color: #000;
-  background-color: #76CE82;
+  color: #fff;
+  background-color: var(--color-start);
+  border: 2px solid white;
+  transform: rotate(-360deg);
 }
+
 
 /* Keyboard */
 
@@ -123,6 +156,15 @@ button {
   background: #FFFFFF;
   border-radius: 5px;
   font-size: var(--font-size-medium);
+  cursor: pointer;
+  transition: padding 5000;
+}
+.btn__reset:active {
+  background: #e5e5e5;
+  /* padding: 15px; */
+}
+.btn__reset:hover {
+  /* padding: 15px; */
 }
 
 /* Overlay */
@@ -138,6 +180,7 @@ button {
   left: 0;
   right: 0;
   border-radius: 5px;
+  z-index: 100;
 }
 
 .title {
