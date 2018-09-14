@@ -68,31 +68,35 @@ const checkLetter = (letter) => {
    }
  }
 
+function initialize() {
+  // Initalizes attributes and class settings on display banner and qwerty display
+  for(let i=0; i<chosen.length; i++) {
+    chosen[i].removeAttribute("disabled");
+    chosen[i].className = '';
+  }
+  const letter = document.querySelectorAll('.letter')
+  for (let i=0;i<letter.length;i++) {
+      letter[i].parentNode.removeChild(letter[i]);
+    }
+  const space = document.querySelectorAll('.space')
+  for (let i=0;i<space.length;i++) {
+      space[i].parentNode.removeChild(space[i]);
+    }
+// Initializes Hearts
+  for(let i=0; i<tries.length; i++){
+        tries[i].setAttribute('src','images/liveHeart.png');
+      }
+// resets random phrase
+  let resetPhrase = getRandomPhraseAsArray(phrases);
+  addPhraseToDisplay(resetPhrase);
+}
+
 //CLICK EVENTS//
  // Hide Start Game Overlay
  startButton.addEventListener('click', ()=> {
    startScreen.style.display = 'none';
-   chosen = document.querySelectorAll('.chosen')
- // Initalizes attributes and class settings on display banner and qwerty display
-   for(let i=0; i<chosen.length; i++) {
-     chosen[i].removeAttribute("disabled");
-     chosen[i].className = '';
-   }
-   const letter = document.querySelectorAll('.letter')
-   for (let i=0;i<letter.length;i++) {
-       letter[i].parentNode.removeChild(letter[i]);
-     }
-   const space = document.querySelectorAll('.space')
-   for (let i=0;i<space.length;i++) {
-       space[i].parentNode.removeChild(space[i]);
-     }
- // Initializes Hearts
-   for(let i=0; i<tries.length; i++){
-         tries[i].setAttribute('src','images/liveHeart.png');
-       }
-// resets random phrase
-   let resetPhrase = getRandomPhraseAsArray(phrases);
-   addPhraseToDisplay(resetPhrase);
+   chosen = document.querySelectorAll('.chosen');
+   initialize();
  });
 
 // Listens for click events on the qwerty display and uses checkWin function to
